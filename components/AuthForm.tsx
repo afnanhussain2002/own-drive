@@ -21,8 +21,14 @@ const formSchema = z.object({
   }),
 })
 
-export function ProfileForm() {
-  // 1. Define your form.
+
+
+
+
+
+type FormType = 'sign-up' | 'sign-in'
+const AuthForm = ({type}: {type: FormType}) => {
+      // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -36,12 +42,7 @@ export function ProfileForm() {
     // ✅ This will be type-safe and validated.
     console.log(values)
   }
-}
 
-
-
-type FormType = 'sign-up' | 'sign-in'
-const AuthForm = ({type}: {type: FormType}) => {
   return (
     <Form {...form}>
     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
