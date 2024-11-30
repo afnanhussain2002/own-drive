@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { useState } from "react"
+import Image from "next/image"
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -82,7 +83,19 @@ const AuthForm = ({type}: {type: FormType}) => {
           </FormItem>
         )}
       />
-      <Button type="submit" className="form-submit-button">{type === 'sign-up' ? 'Sign Up' : 'Sign In'}</Button>
+      <Button type="submit" disabled={isLoading} className="form-submit-button">{type === 'sign-up' ? 'Sign Up' : 'Sign In'}
+        {isLoading && (
+            <Image
+            src='/assets/icons/loader.svg'
+            alt='loader'
+            width={24}
+            height={24}
+            className="animate-spin ml-2"
+            />
+        )}
+
+      </Button>
+
     </form>
   </Form>
     
