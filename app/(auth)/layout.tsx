@@ -7,7 +7,7 @@ const Layout = ({children}: {children: React.ReactNode}) => {
    <div className='bg-brand p-10'>
     <div>
         <Image
-        src='/favicon.ico'
+        src='/assets/icons/logo-full.svg'
         alt='logo'
         width={16}
         height={16}
@@ -19,6 +19,13 @@ const Layout = ({children}: {children: React.ReactNode}) => {
             <p className='body-1'>This is a place where you can manage all your documents </p>
 
         </div>
+        <Image
+        src='/assets/images/files.png'
+        alt='files'
+        width={342}
+        height={342}
+        className='transition-all hover:rotate-2 hover:scale-105'
+        />
     </div>
    </div>
    {children}
