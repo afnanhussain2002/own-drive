@@ -46,6 +46,7 @@ const AuthForm = ({type}: {type: FormType}) => {
     <Form {...form}>
     <form onSubmit={form.handleSubmit(onSubmit)} className="auth-form">
         <h1 className="form-title">{type === 'sign-up' ? 'Sign Up' : 'Sign In'}</h1>
+        {type === 'sign-up' && (
       <FormField
         control={form.control}
         name="username"
@@ -62,6 +63,7 @@ const AuthForm = ({type}: {type: FormType}) => {
           </FormItem>
         )}
       />
+    )}
       <Button type="submit">Submit</Button>
     </form>
   </Form>
