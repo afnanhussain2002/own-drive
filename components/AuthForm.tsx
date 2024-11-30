@@ -64,7 +64,23 @@ const AuthForm = ({type}: {type: FormType}) => {
         )}
       />
     )}
-      <Button type="submit">Submit</Button>
+     <FormField
+        control={form.control}
+        name="email"
+        render={({ field }) => (
+          <FormItem>
+            <div className="shad-form-item">
+            <FormLabel className="shad-form-label">Email</FormLabel>
+            <FormControl>
+              <Input placeholder="john@example.com" {...field} className="shad-input" />
+            </FormControl>
+
+            </div>
+            <FormMessage className="shad-form-message"/>
+          </FormItem>
+        )}
+      />
+      <Button type="submit" className="form-submit-button">{type === 'sign-up' ? 'Sign Up' : 'Sign In'}</Button>
     </form>
   </Form>
     
