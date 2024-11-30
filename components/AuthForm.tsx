@@ -49,17 +49,17 @@ const AuthForm = ({type}: {type: FormType}) => {
         {type === 'sign-up' && (
       <FormField
         control={form.control}
-        name="username"
+        name="fullname"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Username</FormLabel>
+            <div className="shad-form-item">
+            <FormLabel className="shad-form-label">Full Name</FormLabel>
             <FormControl>
-              <Input placeholder="shadcn" {...field} />
+              <Input placeholder="John Doe" {...field} className="shad-input" />
             </FormControl>
-            <FormDescription>
-              This is your public display name.
-            </FormDescription>
-            <FormMessage />
+
+            </div>
+            <FormMessage className="shad-form-message"/>
           </FormItem>
         )}
       />
