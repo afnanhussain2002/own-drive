@@ -4,7 +4,7 @@ import React from 'react'
 const Layout = ({children}: {children: React.ReactNode}) => {
   return (
     <section className='flex min-h-screen'>
-   <div className='bg-brand'>
+   <div className='bg-brand p-10'>
     <div>
         <Image
         src='/favicon.ico'
@@ -21,6 +21,7 @@ const Layout = ({children}: {children: React.ReactNode}) => {
         </div>
     </div>
    </div>
+   {children}
     </section>
   )
 }
