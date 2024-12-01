@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -27,7 +26,7 @@ const formSchema = z.object({
 const authFormSchema = (formType: FormType) =>{
      return z.object({
        email: z.string().email(),
-       fullName: formType === 'sign-up' ? z.string().min(2,).max(50) : z.null()
+       fullName: formType === 'sign-up' ? z.string().min(2,).max(50) : z.string().optional()
      })
 }
 
@@ -38,11 +37,12 @@ type FormType = 'sign-up' | 'sign-in'
 const AuthForm = ({type}: {type: FormType}) => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>("");
+    const formSchema = authFormSchema(type);
       // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
+      fullName: "", email: ""
     },
   })
 
@@ -59,7 +59,7 @@ const AuthForm = ({type}: {type: FormType}) => {
         {type === 'sign-up' && (
       <FormField
         control={form.control}
-        name="fullname"
+        name="fullName"
         render={({ field }) => (
           <FormItem>
             <div className="shad-form-item">
