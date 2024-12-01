@@ -16,6 +16,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { useState } from "react"
 import Image from "next/image"
+import Link from "next/link"
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -99,7 +100,13 @@ const AuthForm = ({type}: {type: FormType}) => {
       {error && (
         <p className="error-message">*{error}</p>
       )}
+       <div className="body-2 flex justify-center">
+        <p className="text-light-100">{type === "sign-up" ? "Already have an account? " : "Don't have an account? "}</p>
+        <Link href={type === "sign-up" ? "/sign-in" : "/sign-up"} className="ml-1 font-medium text-brand">
+        {type === "sign-up" ? "Sign In" : "Sign Up"}
+        </Link>
 
+       </div>
     </form>
   </Form>
     
