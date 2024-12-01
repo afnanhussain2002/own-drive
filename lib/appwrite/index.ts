@@ -8,8 +8,8 @@ export const createSessionClient = async () => {
     .setProject(appwriteConfig.projectId);
     const session = (await cookies()).get('appwrite-session');
 
-    
-};
+    if (!session || !session.value) throw new Error('No session found');
+    client.setSession(session.value);
 
 export const createAdminClient = async() =>{
 
