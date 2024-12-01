@@ -31,6 +31,7 @@ const formSchema = z.object({
 type FormType = 'sign-up' | 'sign-in'
 const AuthForm = ({type}: {type: FormType}) => {
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState<string | null>("");
       // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -95,6 +96,9 @@ const AuthForm = ({type}: {type: FormType}) => {
         )}
 
       </Button>
+      {error && (
+        <p className="error-message">*{error}</p>
+      )}
 
     </form>
   </Form>
