@@ -6,3 +6,7 @@ export const createSessionClient = async () => {
     .setEndpoint(appwriteConfig.endpointUrl)
     .setProject(appwriteConfig.projectId);
 };
+
+export const createAdminClient = async() =>{
+    
+}
