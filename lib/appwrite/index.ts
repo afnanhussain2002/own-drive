@@ -1,8 +1,7 @@
 import { Account, Client, Databases } from "node-appwrite";
 import { appwriteConfig } from "./config";
 import { cookies } from "next/headers";
-import { get } from "http";
-import { Database } from "lucide-react";
+
 
 export const createSessionClient = async () => {
   const client = new Client()
