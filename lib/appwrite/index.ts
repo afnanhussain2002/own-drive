@@ -1,6 +1,7 @@
 import { Account, Client, Databases } from "node-appwrite";
 import { appwriteConfig } from "./config";
 import { cookies } from "next/headers";
+import { get } from "http";
 
 
 export const createSessionClient = async () => {
@@ -40,5 +41,8 @@ export const createAdminClient = async () => {
     get database() {
       return new Databases(client);
     },
+    get storage() {
+      return new Storage(client);
+    }
   };
 };
