@@ -18,6 +18,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { createAccount } from "@/lib/actions/user.actions"
 
+
 const formSchema = z.object({
   username: z.string().min(2, {
     message: "Username must be at least 2 characters.",
@@ -49,11 +50,11 @@ const AuthForm = ({type}: {type: FormType}) => {
   })
 
   // 2. Define a submit handler.
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsLoading(true);
     setError("");
     try {
-      const user = createAccount({fullName: values.fullName || "", email: values.email});
+      const user = await createAccount({fullName: values.fullName || "", email: values.email});
       setAccountId(user.accountId);
     } catch {
       setError("Failed to create account. Please try again.");
