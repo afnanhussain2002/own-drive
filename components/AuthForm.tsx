@@ -38,6 +38,7 @@ type FormType = 'sign-up' | 'sign-in'
 const AuthForm = ({type}: {type: FormType}) => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>("");
+    const [accountId, setAccountId] = useState(null);
     const formSchema = authFormSchema(type);
       // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
@@ -50,7 +51,14 @@ const AuthForm = ({type}: {type: FormType}) => {
   // 2. Define a submit handler.
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     setIsLoading(true);
-    const user = createAccount({fullName: values.fullName || "", email: values.email});
+    try {
+      const user = createAccount({fullName: values.fullName || "", email: values.email});
+      setAccountId(user.accountId);
+    } catch {
+      setError("Failed to create account. Please try again.");
+    }finally{
+      setIsLoading(false);
+    }
   }
 
   return (
