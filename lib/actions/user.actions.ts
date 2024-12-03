@@ -18,6 +18,12 @@ const getUserByEmail = async (email: string) => {
 
 const sendEmailOTP = async ({email}: {email: string}) => {
      const {account} = await createAdminClient();
+
+     try {
+        
+     } catch (error) {
+        
+     }
 };
 
 const createAccount = async ({fullName,email}: {fullName: string, email: string}) => {
