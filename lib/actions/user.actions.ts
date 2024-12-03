@@ -16,6 +16,10 @@ const getUserByEmail = async (email: string) => {
    return result.total > 0 ? result.documents[0] : null;
 }
 
+const handleError = (error: unknown, message: string) => {
+    
+}
+
 const sendEmailOTP = async ({email}: {email: string}) => {
      const {account} = await createAdminClient();
 
