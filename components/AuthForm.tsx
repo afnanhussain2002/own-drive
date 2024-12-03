@@ -51,6 +51,7 @@ const AuthForm = ({type}: {type: FormType}) => {
   // 2. Define a submit handler.
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     setIsLoading(true);
+    setError("");
     try {
       const user = createAccount({fullName: values.fullName || "", email: values.email});
       setAccountId(user.accountId);
