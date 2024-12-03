@@ -37,5 +37,8 @@ const createAccount = async ({fullName,email}: {fullName: string, email: string}
  const existingUser = await getUserByEmail(email);
  
  const accountId = await sendEmailOTP({email});
+    
+ if(!accountId) throw new Error("Failed to send OTP");
 
+ 
 };
