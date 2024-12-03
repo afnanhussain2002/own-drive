@@ -16,6 +16,12 @@ const getUserByEmail = async (email: string) => {
    return result.total > 0 ? result.documents[0] : null;
 }
 
+const sendEmailOTP = async ({email}: {email: string}) => {
+
+};
+
 const createAccount = async ({fullName,email}: {fullName: string, email: string}) => {
  const existingUser = await getUserByEmail(email);
+
+
 };
