@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input"
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { createAccount } from "@/lib/actions/user.actions"
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -48,7 +49,8 @@ const AuthForm = ({type}: {type: FormType}) => {
 
   // 2. Define a submit handler.
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values)
+    setIsLoading(true);
+    const user = createAccount({fullName: values.fullName || "", email: values.email});
   }
 
   return (
