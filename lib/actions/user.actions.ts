@@ -36,6 +36,9 @@ const sendEmailOTP = async ({email}: {email: string}) => {
 
 export const createAccount = async ({fullName,email}: {fullName: string, email: string}) => {
  const existingUser = await getUserByEmail(email);
+
+ console.log("Creating account with:", { fullName, email });
+
  
  const accountId = await sendEmailOTP({email});
     
@@ -51,7 +54,7 @@ export const createAccount = async ({fullName,email}: {fullName: string, email: 
             fullName,
             email,
             avatar:'https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=170667a&w=0&h=kEAA35Eaz8k8A3qAGkuY8OZxpfvn9653gDjQwDHZGPE=',
-            accountId
+            accountId,
         }
     )
  }
